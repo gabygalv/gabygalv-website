@@ -24,8 +24,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "homepage": "https://gabygalv.github.io/gabygalv-website"
-
+    "homepage": "https://gabygalv.github.io/gabygalv-website/"
   },
   "eslintConfig": {
     "extends": [
@@ -46,7 +45,9 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.1.1",
     "node-sass": "^7.0.3",
     "sass-loader": "^14.2.1"
+    
   }
 }

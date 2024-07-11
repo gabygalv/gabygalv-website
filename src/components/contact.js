@@ -54,7 +54,7 @@ const Contact = () => {
             <Grid.Column>
               <Header as='h3'>get in touch</Header>
               <p>I'd love to hear from you! Whether you have a question, want to collaborate, or just want to say hi, feel free to drop a message.</p>
-              <p>You can reach me via email, or social media. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>              
+              <p>You can reach me via any of the links below. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>              
               <p className="contact-links">
                 <a href="mailto:gabygalv.codes@gmail.com"><img height='100' src={mail} alt="email" /></a>
                 <a href="https://www.linkedin.com/in/gaby-galvan/" target="_blank" rel="noopener noreferrer"><img height='100' src={linkedin} alt="linkedin" /></a>

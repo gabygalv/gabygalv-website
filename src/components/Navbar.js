@@ -18,7 +18,7 @@ const Navbar = () => {
           id="home"
         />
       </Link>
-      <Link to="/resume" className="navbar-item">
+      <Link to="/about" className="navbar-item">
         <img
           src={about}
           onMouseOver={() => (document.getElementById('about').src = aboutRev)}

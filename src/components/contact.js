@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, Segment, Header, Grid } from 'semantic-ui-react';
+import { Form, Button, Segment, Header, Grid, Message } from 'semantic-ui-react';
 import github from '../assets/github.png';
 import linkedin from '../assets/linkedin.png';
 import mail from '../assets/mail.png';
@@ -7,6 +7,7 @@ import '../App.scss';
 import emailjs from 'emailjs-com';
 
 const Contact = () => {
+  const [status, setStatus] = useState(null);
   const [formData, setFormData] = useState({
     from_name: '',
     reply_to: '',
@@ -30,11 +31,13 @@ const Contact = () => {
       formData,
       process.env.REACT_APP_EMAILJS_USER_ID
     )
-      .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
-      }, (error) => {
-        console.log('FAILED...', error);
-      });
+    .then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
+      setStatus('success');
+    }, (error) => {
+      console.log('FAILED...', error);
+      setStatus('error');
+    });
 
     setFormData({
       from_name: '',
@@ -93,6 +96,18 @@ const Contact = () => {
                 </Form.Field>
                 <Button type='submit'>Submit</Button>
               </Form>
+              {status === 'success' && (
+                <Message
+                  success
+                  header='Your message was sent successfully!'
+                />
+              )}
+              {status === 'error' && (
+                <Message
+                  error
+                  header='Oops! Something went wrong, feel free to email instead: gabygalv.codes@gmail.com!'
+                />
+              )}
             </Grid.Column>
           </Grid.Row>
         </Grid>

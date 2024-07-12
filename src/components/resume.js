@@ -72,6 +72,19 @@ export default function Resume() {
           </Grid>
           </Segment>
         </Grid.Row>
+        {/* <Grid.Row >
+          <Segment basic >
+            <Header as='h2'>current adventure</Header>
+            <p><Icon name='paper plane outline' /> Ridgetop Group | Software Engineer</p>
+            <p>
+            As a Full Stack Software Engineer at Ridgetop Group, I have played a pivotal role in the evolution and enhancement of Sentinel MotionView software and RotoSense firmware.
+            </p>
+            <p>Sentinel MotionView is an IoT-based sensor system that monitors mission critical equipment observing any combination of temperature and linear, rotatory, or vibrational force. The software then takes the data collected through the</p>
+            <p>Sentinel MotionView is an IoT-based sensor system that monitors mission critical equipment observing any combination of temperature and linear, rotatory, or vibrational force.</p>
+
+          </Segment>
+       
+      </Grid.Row> */}
     </Grid>
   </div>
   );

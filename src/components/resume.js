@@ -19,7 +19,7 @@ export default function Resume() {
       <Grid.Row columns={2}>
         <Grid.Column>
           <Segment basic>
-            <Image src={gaby} fluid style={{maxWidth: '60%'}}/>
+            <Image src={gaby} fluid />
           </Segment>
         </Grid.Column>
         <Grid.Column>

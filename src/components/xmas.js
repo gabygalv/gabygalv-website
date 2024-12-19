@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Table, Button, Input, Dropdown, Segment, Header, Grid, Modal } from 'semantic-ui-react';
+import { Table, Button, Input, Dropdown, Segment, Grid, Tab } from 'semantic-ui-react';
 // import '../index.css';
 
 const Scorekeeper = () => {
@@ -15,6 +15,18 @@ const Scorekeeper = () => {
     "Santa's Sled",
     "Cookie Face Race",
   ];
+  const gameInstructions = {
+    "Streamers": `🎁 Unroll the streamer as fast as you can. \n ⭐ Winner: Person who finishes unrolling first`,
+    "Stack and Float": `🎁 Build a pyramid using cups, while using 1 hand to keep a ballon in the air. \n ⭐ Winner: Person who finishes building their pyramid first wins`,
+    "Reindeer Hooves": `🎁 With cups on your hands, put as many cotton balls into your bowl as you can in 1 minute. \n ⭐ Winner: Person with the most cotton balls in their bowl wins.`,
+    "Flip-Tac-Toe": `🎁 TEAM GAME! Flip your cup, then place it on the tic-tac-toe board. Cups CAN stack on opponents cups. \n ⭐ Winner: FIrst team to get tic-tac-toe`,
+    "Candy Cane Fishing": `🎁 Hook candy canes from a bowl with another cane in 1 minute. ⭐ Winner: Person who fished the most candy canes`,
+    "Snatch the Candy Cane": `🎁 Grab the candy cane when the music stops. \n ⭐ Winner: Last person standing wins!`,
+    "Santa's Breath": `🎁 Blow out as many candles as possible while saying HO HO HO. \n ⭐ Winner: Person who blows out the most candles.`,
+    "Snow Shovel": `🎁 Move cotton balls into a bowl using a spatula, blindfolded + 1 minute. \n ⭐ Winner: Person with the most cotton balls wins!`,
+    "Santa's Sled": `🎁 Pull your toilet paper roll accross the table as quickly as possible. \n BE CAREFUL, if the water spills your sled might rip and you'll have to start again.. \n ⭐ Winner: Person who crosses the finish line first`,
+    "Cookie Face Race": `🎁 Slide a cookie from your forehead to your mouth, with your hands behind your back! If the cookie falls you can pick it up.\n⭐ Winner: Person who gets the cookie in their mouth first`
+  };
   const [games, setGames] = useState([]);
   const [players, setPlayers] = useState([]); // List of players
   const [pastGameResults, setPastGameResults] = useState([]); // Results history
@@ -22,8 +34,7 @@ const Scorekeeper = () => {
   const [newPlayer, setNewPlayer] = useState(''); // Temporary state for adding a player
   const [selectedGame, setSelectedGame] = useState(null); // Randomly selected game
   const [winnerSelections, setWinnerSelections] = useState([]); // Temporary state for winner dropdowns
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState({ title: '', instructions: '' });
+
 
   // Handlers
   const handleAddGame = () => {
@@ -88,15 +99,6 @@ const Scorekeeper = () => {
     setWinnerSelections([]);
   };
 
-  const openGameModal = (game) => {
-    const instructions = `Instructions for ${game}. Here you can add more detailed instructions.`; // Replace with detailed instructions
-    setModalContent({ title: game, instructions });
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
 
   // Calculate total wins for each player
   const calculateWins = (player) => {
@@ -123,33 +125,12 @@ const Scorekeeper = () => {
     }
   };
 
-  return (
-    <div className="xmas-body">
-      <Segment className="xmas-container">
-        <h2 textAlign="center" className="xmas-header">
-          🎄 2nd Annual Xmas Games 🎄
-        </h2>
-        <h4 textAlign="center" className="xmas-subheader">
-          May the odds be ever in your favor 👹
-        </h4>
-
-        <Modal open={modalOpen} onClose={closeModal} size="small">
-          <Modal.Header className="xmas-modal-header">{modalContent.title}</Modal.Header>
-          <Modal.Content>
-            <p>{modalContent.instructions}</p>
-          </Modal.Content>
-          <Modal.Actions>
-            <Button onClick={closeModal} className="xmas-modal-close">
-              Close
-            </Button>
-          </Modal.Actions>
-        </Modal>
-
-        <Grid divided="vertically">
-          <Grid.Row>
-            <Grid.Column width={8}>
-              <h3 className="xmas-header">Players</h3>
-              <Input
+  const panes = [
+    {menuItem: 'Players',
+      render: () => 
+        <>
+       <h3 className="xmas-header">Players</h3>
+        <Input
                 placeholder="Player name"
                 value={newPlayer}
                 onChange={(e) => setNewPlayer(e.target.value)}
@@ -178,9 +159,10 @@ const Scorekeeper = () => {
                   ))}
                 </Table.Body>
               </Table>
-            </Grid.Column>
-            <Grid.Column width={8}>
-              <h3 className="xmas-header">Games</h3>
+              </>
+      },
+    { menuItem: 'Games', render: () => <>
+    <h3 className="xmas-header">Games</h3>
               <button onClick={handleAddPredefinedGames} style={{ marginTop: '10px' }} className="xmas-button">
                 Add Xmas Games
               </button>
@@ -201,21 +183,17 @@ const Scorekeeper = () => {
                 <Table.Body>
                   {games.map((game) => (
                     <Table.Row key={game}>
-                      <Table.Cell style={{ background: '#333', color: '#fff' }}>{game}</Table.Cell>
-                      <Table.Cell style={{ background: '#333', color: '#fff' }}>
-                        <button onClick={() => openGameModal(game)} className="xmas-button"> ? </button>
+                      <Table.Cell style={{ color: '#006400' }}>{game}</Table.Cell>
+                      <Table.Cell style={{ color: '#006400' }}>
                         <button  onClick={() => handleRemoveGame(game)} className="xmas-button">X</button>
                       </Table.Cell>
                     </Table.Row>
                   ))}
                 </Table.Body>
               </Table>
-            </Grid.Column>
-          </Grid.Row>
-
-          <Grid.Row>
-            <Grid.Column width={16}>
-              <h3 className="xmas-header">Game Results</h3>
+              </> },
+    { menuItem: 'Scores', render: () => <>
+    <h3 className="xmas-header">Game Results</h3>
               <Table celled className="xmas-table">
                 <Table.Header>
                   <Table.Row>
@@ -227,17 +205,17 @@ const Scorekeeper = () => {
                 <Table.Body>
                   {pastGameResults.map((result, index) => (
                     <Table.Row key={index}>
-                      <Table.Cell style={{ background: '#333', color: '#fff' }}>{result.game}</Table.Cell>
-                      <Table.Cell style={{ background: '#333', color: '#fff' }}>{result.player}</Table.Cell>
-                      <Table.Cell style={{ background: '#333', color: '#fff' }}>
+                      <Table.Cell style={{ color: '#006400' }}>{result.game}</Table.Cell>
+                      <Table.Cell style={{ color: '#006400' }}>{result.player}</Table.Cell>
+                      <Table.Cell style={{ color: '#006400' }}>
                         <Button disabled>Edit</Button>
                       </Table.Cell>
                     </Table.Row>
                   ))}
                   {winnerSelections.map((selection, index) => (
                     <Table.Row key={`new-${index}`}>
-                      <Table.Cell style={{ background: '#333', color: '#fff' }}>{selection.game}</Table.Cell>
-                      <Table.Cell style={{ background: '#333', color: '#fff' }}>
+                      <Table.Cell style={{ color: '#006400' }}>{selection.game}</Table.Cell>
+                      <Table.Cell style={{ color: '#006400' }}>
                         <Dropdown
                           placeholder="Select Winners"
                           fluid
@@ -247,7 +225,7 @@ const Scorekeeper = () => {
                           onChange={(e, { value }) => handleSelectWinners(value, selection.game)}
                         />
                       </Table.Cell>
-                      <Table.Cell style={{ background: '#333', color: '#fff' }}>
+                      <Table.Cell style={{ color: '#006400' }}>
                         <button color="green" onClick={handleSaveResults} className="xmas-button">
                           Save
                         </button>
@@ -256,20 +234,50 @@ const Scorekeeper = () => {
                   ))}
                 </Table.Body>
               </Table>
-            </Grid.Column>
-          </Grid.Row>
 
           <Grid.Row>
             <Grid.Column width={16} textAlign="center">
               <button onClick={pickRandomGame} className="xmas-button">
-                Pick a Random Game
+                Pick a random game
               </button>
               <button color="red" onClick={handleClearAll} className="xmas-button">
                 Clear All
               </button>
             </Grid.Column>
           </Grid.Row>
-        </Grid>
+    </> },
+    { menuItem: 'Play', render: () => 
+      <>
+      <button onClick={pickRandomGame} className="xmas-button-play">
+      Let's go!
+      </button>
+      {selectedGame && (
+        <div>
+          <h4 className="xmas-subheader">{selectedGame}</h4>
+          <p className="xmas-subheader" style={{color: '#003e1f'}}>{gameInstructions[selectedGame]
+        .split('\n')
+        .map((line, index) => (
+          <React.Fragment key={index}>
+            {line}
+            <br />
+          </React.Fragment>
+        ))}</p>
+        </div>
+      )}
+    </>
+   }
+  ]
+
+  return (
+    <div className="xmas-body snow">
+      <Segment className="xmas-container">
+        <h2 textAlign="center" className="xmas-header">
+          🎄 2nd Annual Xmas Games 🎄
+        </h2>
+        <h4 textAlign="center" className="xmas-subheader">
+          May the odds be ever in your favor 👹
+        </h4>
+      <Tab panes={panes} />
       </Segment>
     </div>
   );

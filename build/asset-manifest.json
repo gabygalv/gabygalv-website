@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.9e94c249.css",
-    "main.js": "/static/js/main.7bae17fa.js",
+    "main.css": "/static/css/main.689d076f.css",
+    "main.js": "/static/js/main.d8a29348.js",
     "static/js/453.e4c0f88f.chunk.js": "/static/js/453.e4c0f88f.chunk.js",
     "static/media/tvdemo.gif": "/static/media/tvdemo.7eadf2b595bd1cfbbc1b.gif",
     "static/media/pgp.mp4": "/static/media/pgp.5be6efea333abf6c5e37.mp4",
+    "static/media/gaby.png": "/static/media/gaby.f3f0af80af1acfd835f9.png",
     "static/media/brand-icons.svg": "/static/media/brand-icons.6729d29753e000c17489.svg",
     "static/media/icons.svg": "/static/media/icons.62d9dae4e0040e81c980.svg",
     "static/media/tv.png": "/static/media/tv.5b83e10361aa79169144.png",
@@ -39,16 +40,15 @@
     "static/media/outline-icons.ttf": "/static/media/outline-icons.5367103510b27b784827.ttf",
     "static/media/flags.png": "/static/media/flags.99f63ae7a743f21ab308.png",
     "static/media/gg-logo.png": "/static/media/gg-logo.53b13eb1631025c231f0.png",
-    "static/media/gaby.png": "/static/media/gaby.15951a70993659544bca.png",
     "static/media/outline-icons.woff": "/static/media/outline-icons.ddae9b1ba9b0b42f5880.woff",
     "static/media/outline-icons.woff2": "/static/media/outline-icons.687a4990ea22bb1a49d4.woff2",
     "index.html": "/index.html",
-    "main.9e94c249.css.map": "/static/css/main.9e94c249.css.map",
-    "main.7bae17fa.js.map": "/static/js/main.7bae17fa.js.map",
+    "main.689d076f.css.map": "/static/css/main.689d076f.css.map",
+    "main.d8a29348.js.map": "/static/js/main.d8a29348.js.map",
     "453.e4c0f88f.chunk.js.map": "/static/js/453.e4c0f88f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9e94c249.css",
-    "static/js/main.7bae17fa.js"
+    "static/css/main.689d076f.css",
+    "static/js/main.d8a29348.js"
   ]
 }

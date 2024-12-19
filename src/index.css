@@ -15,3 +15,130 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* Scorekeeper.css */
+
+/* Dark snowy background */
+.xmas-body {
+  background: #1a1a2e; /* Deep navy background */
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.xmas-body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: radial-gradient(white 2px, transparent 2px);
+  background-size: 20px 20px;
+  opacity: 0.3;
+  animation: snow 20s linear infinite;
+  z-index: 0;
+}
+
+@keyframes snow {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 100%;
+  }
+}
+
+.xmas-container {
+  position: relative;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 0 10px #ffffff50;
+  z-index: 1;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Centered container */
+
+/* Headers with Christmas colors */
+.xmas-header {
+  color: #e63946; /* Bright red */
+  font-size: 2em;
+  margin: 10px 0;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  
+}
+
+.xmas-subheader {
+  color: #a8dadc; /* Soft icy blue */
+  font-size: 1.5em;
+  /* margin-bottom: 20px; */
+  font-family: "Coda", serif;
+  font-weight: 400;
+}
+
+/* Retro-style buttons */
+.xmas-button {
+  background-color: #e63946; /* Bright red */
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8em;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.xmas-button:hover {
+  background-color: #f77f00; /* Lighter orange-red */
+  transform: scale(1.1); /* Slightly enlarges on hover */
+}
+
+/* Table styling */
+.xmas-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  color: white;
+}
+
+.xmas-table th {
+  background: #e63946; /* Bright red */
+  color: white;
+  padding: 10px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.xmas-table td {
+  /* background: rgba(255, 255, 255, 0.1); */
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ffffff30;
+}
+
+/* Input styling */
+.xmas-input {
+  font-family: 'Press Start 2P', cursive;
+  padding: 10px;
+  background: #ffffff20;
+  /* border: 2px solid #e63946; Red border */
+  color: white;
+  border-radius: 5px;
+  width: calc(100% - 22px);
+  margin-top: 10px;
+}

@@ -11,10 +11,9 @@ import Scorekeeper from './components/xmas';
 function App() {
   const location = useLocation();
 
-
   return (
     <div>
-    {location.pathname !== '/xmas' && <Navbar />}
+      {location.pathname !== '/xmas' && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<Resume />} />
@@ -26,4 +25,12 @@ function App() {
   );
 }
 
-export default App;
+function AppWrapper() {
+  return (
+    <Router>
+      <App />
+    </Router>
+  );
+}
+
+export default AppWrapper;

@@ -11,9 +11,12 @@ import Scorekeeper from './components/xmas';
 function App() {
   const location = useLocation();
 
+  // Adjust location check for HashRouter (path starts after "#/")
+  const isXmasPage = location.pathname === '/xmas' || location.hash === '#/xmas';
+
   return (
     <div>
-      {location.pathname !== '/xmas' && <Navbar />}
+      {!isXmasPage && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<Resume />} />
